@@ -1,25 +1,25 @@
-//Code for insertion sort
-#include <stdio.h>
+//Code for selection sort
 
+ 
 int main()
 {
-    int arr[6] ={20,15,2,7,10}; 
-    int j;
+    int arr[6] = {12,6,23,4,7,90};
     
-    int target;
-    for(int i = 0; i<6;i++){
-        target = arr[i];
-        j = 1-i;
-        while(j>0 && arr[i]>target){
-            arr[j+1] = arr[j];
-            j = j-1;
-        }//while ends
-        arr[j+1] = target;
-    }//for ends
-
-//to print the array.
-for(int k = 0; k<6; k++){
-    printf("\t%d", arr[k]);
-}//for ends
+ int i, key, j;
+   for (i = 1; i < 6; i++)
+   {
+       key = arr[i];
+       j = i-1;
+ 
+       /* Move elements of arr[0..i-1], that are
+          greater than key, to one position ahead
+          of their current position */
+       while (j >= 0 && arr[j] > key)
+       {
+           arr[j+1] = arr[j];
+           j = j-1;
+       }
+       arr[j+1] = key;
+   }
     return 0;
 }
