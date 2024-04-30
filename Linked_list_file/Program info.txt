@@ -1,0 +1,3 @@
+The linked_list_file program maintains the student information in a file.
+When the program is executed then it checks if the file contains the linked list or not, if not then it starts from the beginging writing to the file.
+If the linked list do exists then imports the linked list to the program and then does operations on the program like appending the list, deletion of student info.
