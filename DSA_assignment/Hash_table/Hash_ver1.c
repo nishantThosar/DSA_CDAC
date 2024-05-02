@@ -48,7 +48,7 @@ int main()
 		do{
 			print_menu();
 			scanf("%d", &user_choice);
-			if((isdigit(user_choice)) &&(-1<user_choice) && (user_choice<3)){
+			if((isdigit(user_choice)) &&(-1<user_choice) && (user_choice<4)){//here if we comment out is digit then the loop works fine.
 				flag = false;
 				choice = user_choice;
 				break;
