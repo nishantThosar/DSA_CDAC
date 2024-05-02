@@ -51,6 +51,7 @@ int main()
 			if((isdigit(user_choice)) &&(-1<user_choice) && (user_choice<3)){
 				flag = false;
 				choice = user_choice;
+				break;
 			}//if ends
 			else{
 				printf("\n\t WRONG INPUT");
