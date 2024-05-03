@@ -1,4 +1,8 @@
-//This program is for using linked list as stack.
+/*In this progra stack is implimented by linked list
+Program By Nishant Thosar
+Date: 03/May/2024
+Place: ACTS
+*/
 
 #include<stdio.h>
 #include<stdlib.h>
