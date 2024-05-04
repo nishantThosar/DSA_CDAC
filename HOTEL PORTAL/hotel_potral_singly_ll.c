@@ -14,14 +14,16 @@ Input must not be duplicate*/
 #include <stdio_ext.h>//for fpurge.
 
 /*---------------------------------------------------FUNCTION DECLARAION--------------------------------------------------*/
-struct customer* node_maker();
-int search(struct customer *, int );
-char* name_insert(void);
-struct customer* node_maker(void);
-void insert_customer(struct customer **);
-void display(struct customer *);
+struct customer* node_maker();//to make node
+int duplicate(struct customer *, int );// search if the ID entered by user is duplicate or not.
+char* name_insert(void);// to enter the name in calloc
+struct customer* node_maker(void);// to make a new node.
+void insert_customer(struct customer **);//to insert a new customer.
+void display(struct customer *);// to display all the customers
 void date_ip_validation(int *,int *, int *);//for input validatoin of date.
-void time_ip_validation(int *,int *);
+void time_ip_validation(int *,int *);//for input validation of time.
+int search(struct customer *head, int target);//to search the element in the queue
+
 /*---------------------------------------------------GLOBAL VARIABLE DECLARAION--------------------------------------------------*/
 
 
@@ -88,7 +90,7 @@ void insert_customer(struct customer **portal)
 	else
 	{
 		//if duplicate ID is present then throw error to user
-		if(search(*portal, id))
+		if(duplicate(*portal, id))
 		{
 			printf("\nError duplicate ID");
 			return;
@@ -239,7 +241,7 @@ char* name_insert(void)
 }//name_insert ends
 
 /*---------------------------------------------------SEARCH FUNCTION--------------------------------------------------*/
-int search(struct customer *head, int target)
+int duplicate(struct customer *head, int target)
 {
 	struct customer *trav = NULL;
 	trav = head;
@@ -253,6 +255,101 @@ int search(struct customer *head, int target)
 	}//while ends
 
 }//search ends
+
+/*---------------------------------------------SEARCH FUNCTION-----------------------------------------------------*/
+/*TO search the ID in the list*/
+int search(struct customer *head, int target)
+{
+	int count = 0;
+	struct customer *trav = NULL;
+	trav = head;
+	while(trav->next != NULL)
+	{
+		if(target == trav->id)
+		{
+			return count;
+		}
+		else if(trav->next == NULL)
+		{
+				printf("\n\tERROR ID NOT IN DATABASE\n");
+		}
+		else
+			count ++;
+	}//while ends
+}//search ends
+
+/*-------------------------------------------------MODIFY--------------------------------------------------------------*/
+void modify(struct customer **head, int cnt)
+{
+	struct customer *trav = NULL;
+	trav = *head;
+	int temp;
+	char *name;
+
+	for(int i=0; i<cnt; i++)
+	{
+		trav = trav->next;
+	}//for ends
+
+	printf("\n\nDetails ");
+	printf("\nCurrent ID: %d", trav->id);
+	printf("\nCurrent Name: %s", trav->name);
+	printf("\nDate: %d/%d/%d ", trav->dt.day,trav->dt.month,trav->dt.year);
+
+	int choice;
+	printf("\n\n========================MODIFICATION MENU=================================");
+	printf("\n\t1.ID\t2.Name");
+	printf("\n\nEnter what you want to modify");
+	scanf("%d", &choice);
+
+	switch(choice)
+	{
+		case 1: while(1){
+					printf("\nEnter the modified ID");
+					scanf("%d", &temp);
+					int flag = duplicate(*head,temp);
+					if(flag)
+					{
+						trav->id = temp;
+						printf("\n\nDetails ");
+						printf("\nCurrent ID: %d", trav->id);
+						printf("\nCurrent Name: %s", trav->name);
+						printf("\nDate: %d/%d/%d ", trav->dt.day,trav->dt.month,trav->dt.year);
+	
+						break;
+					}
+				}//while ends
+		
+		case 2: name = name_insert();
+				printf("\n\nDetails ");
+				printf("\nCurrent ID: %d", trav->id);
+				printf("\nCurrent Name: %s", trav->name);
+				printf("\nDate: %d/%d/%d ", trav->dt.day,trav->dt.month,trav->dt.year);
+				break;				
+	}//switch end
+
+
+
+}//modify ends
+
+/*---------------------------------------------------DELETE FUNCTION---------------------------------------------------*/
+void delete_at_pos(struct customer **head, int pos)
+{
+	struct customer *temp =  NULL;
+	temp = *head;
+
+	for(int i=0; i<=pos; i++)
+	{
+		temp = temp->next;
+	}//for ends
+	temp->id = 0;
+	temp->dt.day = 0;
+	temp->dt.month = 0;
+	temp->dt.year = 0;
+	temp->dt.day = 0;
+	temp->time.hr = 0;
+	temp->time.min = 0;
+}//delete at ends ends
 
 /*---------------------------------------------------DISPLAY FUNCTION--------------------------------------------------*/
 void display(struct customer *portal)
@@ -281,4 +378,4 @@ struct customer* node_maker(void)
 }//insert ends.
 
 
-/*---------------------------------------------------END--------------------------------------------------*/
+/*-----------------------------------------------------END---------------------------------------------------------*/
