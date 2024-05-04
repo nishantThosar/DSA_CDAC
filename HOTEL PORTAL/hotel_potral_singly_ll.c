@@ -150,7 +150,7 @@ void time_ip_validation(int *hr,int *min)
 	do{
 		printf("Enter minutes");
 		scanf("%d", &temp);
-		if(temp>0 && temp<13)
+		if(temp>=0 && temp<60)
 		{
 			flag_min = 0;
 			*min = temp;
