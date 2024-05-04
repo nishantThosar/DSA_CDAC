@@ -98,7 +98,7 @@ void dequeue(int arr[], int *front, int *rear){
 	}// if ends
 	
 	else{
-		/*The following code has 3 conditions
+		/*The following code has 2 conditions
 		 * 1.If front and rear pointers are at same index then initialize both front and rear to Initial condition (ie:-1)
 		 * 2.If not then incriment the front pointer */
 
