@@ -240,7 +240,7 @@ char* name_insert(void)
 		return name;
 }//name_insert ends
 
-/*---------------------------------------------------SEARCH FUNCTION--------------------------------------------------*/
+/*---------------------------------------------------DUPLICATE FUNCTION--------------------------------------------------*/
 int duplicate(struct customer *head, int target)
 {
 	struct customer *trav = NULL;
